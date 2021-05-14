@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dynamic_adding</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="dynamic_code.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<div>
+	<div class="header">
+  
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn" data-toggle="modal" data-target="#myModal">Create</button>
+  	</div>
+  
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">To Create Cards</h4>
+        </div>
+        <div class="form">
+            <form>
+			    <label for="title">Heading</label><br>
+			    <input type="text" id="heading" placeholder="Your Title.."><br>
+
+			    <label style="margin-bottom: 10px;" for="contents">Paragraph</label><br>
+			    <textarea type="text" id="paragraph" placeholder="Your Contents.."></textarea><br>
+
+			    <label for="image">Code</label><br>
+			 	<textarea type="text" id="code" placeholder="Your Code.."></textarea><br>
+
+			 	<label for="image">Result</label><br>
+			 	<input type="text" id="result" placeholder="Your Result.."><br>
+
+			    <button style="margin-top: 20px;" onclick="submit_btn(); return false">Submit</button>
+			</form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+<div id="maindiv" style="display: flex;">
+	
+</div>
+	
+	<script>
+		
+
+
+
+		var adding = [];
+		var x = localStorage.getItem("adding");
+		var old_array = JSON.parse(x)
+		console.log(old_array)
+
+
+				for (i=0;i<old_array.length;i++){
+			document.getElementById('maindiv').innerHTML += '<div class="task"><div class="align"><h1 class="h1">'+old_array[i].heading+'</h1><p class="para">'+old_array[i].paragraph+'</p></div><div></div></div><div class="division"><div class="code"><div class="padding"><h1>Code</h1><pre>'+old_array[i].code+'</pre></div></div><div class="result"><div class="padding"><h1 class="h1">Result</h1><p class="para" style="margin-left: 30px;">'+old_array[i].result+'</p></div></div></div>'
+		}
+
+
+		
+
+		
+
+		function submit_btn(){
+
+
+
+		if (old_array !== null) {
+
+		for (i=0;i<old_array.length;i++){
+			adding.push(old_array[i]);
+
+		}
+		var heading = document.getElementById('heading').value;
+		var paragraph = document.getElementById('paragraph').value;
+		var code = document.getElementById('code').value;
+		var result = document.getElementById('result').value;
+		
+		adding.push({heading : heading , paragraph : paragraph , code : code , result : result})
+		
+		localStorage.setItem("adding", JSON.stringify(adding));
+		
+		  $('#myModal').modal('hide');
+	
+		location.reload();
+        }else{
+
+
+		var heading = document.getElementById('heading').value;
+		var paragraph = document.getElementById('paragraph').value;
+		var code = document.getElementById('code').value;
+		var result = document.getElementById('result').value;
+		
+		adding.push({heading : heading , paragraph : paragraph , code : code , result : result})
+		
+		localStorage.setItem("adding", JSON.stringify(adding));
+		
+		  $('#myModal').modal('hide');
+	
+		location.reload();
+		}
+		}
+
+		
+		
+	</script>
+
+</body>
+</html>

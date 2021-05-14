@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dynamic Cards</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="dynamicstyle.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<div>
+
+	<div class="header">
+ 
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Create</button>
+  	</div>
+  
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">To Create Cards</h4>
+        </div>
+        <div class="form">
+            <form>
+			    <label for="title">Title</label><br>
+			    <input type="text" id="title" placeholder="Your Title.."><br>
+
+			    <label style="margin-bottom: 10px;" for="contents">Contents</label><br>
+			    <textarea type="text" id="content" placeholder="Your Contents.."></textarea><br>
+
+			    <label for="image">image</label><br>
+			 	<input type="text" id="image" placeholder="Your image src.."><br>
+			    <button style="margin-top: 20px;" onclick="submit_btn(); return false">Submit</button>
+			</form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+<div id="maindiv" style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+	
+</div>
+	
+	<script>
+		
+
+		var array = [];
+		var x = localStorage.getItem("array");
+		var old_array = JSON.parse(x)
+		console.log(old_array)
+
+
+				for (i=0;i<old_array.length;i++){
+			document.getElementById('maindiv').innerHTML += '<div class="card">'+'<div class="height" style="width: 100%;">'+'<img class="imgbx" src="'+old_array[i].image+'">'+'</div>'+'<div class="heading">'+'<p style="font-size: 30px;">'+old_array[i].heading+'</p></div>'+'<div class="para"> <p class="alignment">'+old_array[i].paragraph+'</p></div>'+'<hr>'+'<div class="heading1">'+'<div class="bold">'+'<h4><b><a href="file:///C:/Users/ADMIN/Desktop/html/dynamic_cards/dynamic_js.html" target="_blank">READ MORE</a></b></h4>'+'</div>'+'<i class="fa fa-2x fa-heart"></i>'+'<i style="margin-left: 30px;" class="fa fa-2x fa-share-alt"></i>'+'</div>'+'</div>'
+		}
+
+
+		
+
+		
+
+		function submit_btn(){
+
+
+
+		if (old_array !== null) {
+
+		for (i=0;i<old_array.length;i++){
+			array.push(old_array[i]);
+
+		}
+		var title = document.getElementById('title').value;
+		var content = document.getElementById('content').value;
+		var image = document.getElementById('image').value;
+		var object = {heading: title, paragraph: content, image: image}
+		
+		array.push(object)
+		
+		localStorage.setItem("array", JSON.stringify(array));
+		
+		  $('#myModal').modal('hide');
+	
+		location.reload();
+        }else{
+
+
+		var title = document.getElementById('title').value;
+		var content = document.getElementById('content').value;
+		var image = document.getElementById('image').value;
+		var object = {heading: title, paragraph: content, image: image}
+		
+		array.push(object)
+		
+		localStorage.setItem("array", JSON.stringify(array));
+		
+		  $('#myModal').modal('hide');
+	
+		location.reload();
+		}
+		}
+
+		
+		
+		
+
+	</script>
+
+</body>
+</html>

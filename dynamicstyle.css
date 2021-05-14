@@ -117,3 +117,22 @@ a:hover {
 a:active {
   text-decoration: underline;
 }
+@media only screen and (max-width: 600px) {
+  .header {
+        display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.card{
+    width: 84%;
+    height: 64vh;
+    margin: 7%;
+    box-shadow: 1px 3px 6px 1px #635f5f;
+    color: #6d5353;
+    background: #ffffff;
+    border-radius: 8px;
+   }
+    
+img{
+    max-width: 101%;
+}

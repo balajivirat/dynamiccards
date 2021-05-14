@@ -58,7 +58,8 @@
 </div>
 	
 	<script>
-		
+		document.getElementById('maindiv').innerHTML = '<div class="card"><div class="height" style="width: 100%;"> <img class="imgbx" src="js.jpeg"></div><div class="heading"> <p id="heading" style="font-size: 30px;">JS</p></div><div class="para"> <p id="paragraph" class="alignment">JAVASCRIPT</p></div><hr><div class="heading1"><div class="bold"><h4><b><a href="file:///C:/Users/ADMIN/Desktop/html/dynamic_cards/dynamic_js.html" target="_blank">READ MORE</a></b></h4></div><i class="fa fa-2x fa-heart"></i><i style="margin-left: 30px;" class="fa fa-2x fa-share-alt"></i></div></div>'
+
 
 		var array = [];
 		var x = localStorage.getItem("array");
@@ -67,7 +68,7 @@
 
 
 				for (i=0;i<old_array.length;i++){
-			document.getElementById('maindiv').innerHTML += '<div class="card">'+'<div class="height" style="width: 100%;">'+'<img class="imgbx" src="'+old_array[i].image+'">'+'</div>'+'<div class="heading">'+'<p style="font-size: 30px;">'+old_array[i].heading+'</p></div>'+'<div class="para"> <p class="alignment">'+old_array[i].paragraph+'</p></div>'+'<hr>'+'<div class="heading1">'+'<div class="bold">'+'<h4><b><a href="file:///C:/Users/ADMIN/Desktop/html/dynamic_cards/dynamic_js.html" target="_blank">READ MORE</a></b></h4>'+'</div>'+'<i class="fa fa-2x fa-heart"></i>'+'<i style="margin-left: 30px;" class="fa fa-2x fa-share-alt"></i>'+'</div>'+'</div>'
+			document.getElementById('maindiv').innerHTML +=  '<div class="card">'+'<div class="height" style="width: 100%;">'+'<img class="imgbx" src="'+old_array[i].image+'">'+'</div>'+'<div class="heading">'+'<p style="font-size: 30px;">'+old_array[i].heading+'</p></div>'+'<div class="para"> <p class="alignment">'+old_array[i].paragraph+'</p></div>'+'<hr>'+'<div class="heading1">'+'<div class="bold">'+'<h4><b><a href="file:///C:/Users/ADMIN/Desktop/html/dynamic_cards/dynamic_js.html" target="_blank">READ MORE</a></b></h4>'+'</div>'+'<i class="fa fa-2x fa-heart"></i>'+'<i style="margin-left: 30px;" class="fa fa-2x fa-share-alt"></i>'+'</div>'+'</div>'
 		}
 
 
